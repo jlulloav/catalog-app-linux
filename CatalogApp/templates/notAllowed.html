@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="row banner">
+    <div class="container-wrapper">
+        <div class="col-xs-12">
+            <h2>Sorry, Not Authorized</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box-wrapper clearfix text-center">
+                    <p>{{message}}</p>
+
+                    <a href="{{url_for('showCategories')}}" class="btn btn-primary back-button">
+                        <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="row banner">
+    <div class="container-wrapper">
+        <div class="col-xs-12">
+            <h2>New Category</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="message-wrapper">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul class="list-unstyled">
+                        {% for message in messages %}
+                        <li class="alert alert-info">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
+                <div class="box-wrapper clearfix">
+                    <form action="{{url_for('newCategory')}}" method="post">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" maxlength="100" name="name" placeholder="Enter category name">
+
+                            <div class="button-form-wrapper">
+                                <button type="submit" class="btn btn-success" id="submit" type="submit">
+                                    Create
+                                </button>
+                                <a href='{{url_for('showCategories')}}'>
+                                    <div class="btn btn-default">
+                                        Cancel
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

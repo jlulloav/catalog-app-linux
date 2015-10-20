@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="row banner">
+    <div class="container-wrapper">
+        <div class="col-xs-12">
+            <h2>Delete Item</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box-wrapper clearfix text-center">
+                    <h2> Are you sure you want to delete {{item_title}}? </h2>
+                    <form action="{{url_for('deleteItem', category_name = category_name, item_title = item_title)}}" method='post'>
+                        <button type="submit" class="btn btn-danger" id="submit" type="submit">
+                            Delete
+                        </button>
+                        <a href='{{url_for('showItems', category_name = category_name )}}'>
+                            <div class="btn btn-default">
+                                Cancel
+                            </div>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

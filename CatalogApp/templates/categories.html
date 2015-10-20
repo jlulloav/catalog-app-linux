@@ -1,0 +1,58 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="row banner">
+    <div class="container-wrapper">
+        <div class="col-xs-12">
+            <h2>Categories</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="message-wrapper">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+
+                    <ul class="list-unstyled">
+                        {% for message in messages %}
+                        <li class="alert alert-info">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
+                <div class="content-button-wrapper clearfix">
+                    <a href="{{url_for('newCategory')}}" class="btn btn-success pull-right">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Category
+                    </a>
+                </div>
+
+                <div class="list-group">
+                    {% for category in categories %}
+                    <div class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <a href="{{url_for('showItems', category_name = category.name)}}">
+                                    <h3>{{category.name}}</h3>
+                                </a>
+                            </div>
+                            {% if user_id == category.user_id %}
+                            <div class="col-xs-4 options-buttons-wrapper">
+                                <a href="{{url_for('editCategory', category_name = category.name)}}">Edit</a> |
+                                <a href="{{url_for('deleteCategory', category_name = category.name)}}">Delete</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

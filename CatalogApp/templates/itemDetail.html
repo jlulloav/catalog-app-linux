@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% block content %}
+
+{% if item != None %}
+<div class="row banner">
+    <div class="container-wrapper">
+        <div class="col-xs-12">
+            <h2>{{item.title}} Details</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="message-wrapper">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li><strong> {{ message }} </strong></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
+                <div class="box-wrapper">
+                    <label>Description:</label>
+                    <p>{{item.description}}</p>
+                    {% if is_option_visible == true %}
+                    <div class="">
+                        <a href='{{url_for('editItem', category_name = category_name, item_title = item.title ) }}'>Edit</a> |
+                        <a href='{{url_for('deleteItem', category_name = category_name, item_title = item.title ) }}'>Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <a href="{{url_for('showItems', category_name = category_name)}}" class="btn btn-primary back-button">
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+
+{% include "notFound.html" %}
+
+{% endif %}
+{% endblock %}

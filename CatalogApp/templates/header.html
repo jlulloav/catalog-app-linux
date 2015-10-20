@@ -1,0 +1,16 @@
+<div class="row header">
+    <div class="container-wrapper">
+        <div class="col-xs-6">
+            <a href="{{url_for('showCategories')}}" class="title-wrapper">
+                <h1>Catalog App</h1>
+            </a>
+        </div>
+        <div class="col-xs-6 text-right">
+            {%if 'username' not in session %}
+            <a href="{{url_for('showLogin')}}" class="btn btn-primary">Login</a>
+            {% else %}
+            <a href="{{url_for('disconnect')}}" class="btn btn-primary">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
